@@ -1,0 +1,69 @@
+
+<div class="filter">
+    <mat-form-field appearance="fill">
+    <mat-label>Brands</mat-label>
+    <mat-select multiple (selectionChange)="setBrandFilter($event.value)">
+      <mat-option *ngFor="let brand of brandList" [value]="brand">{{brand}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Min. price range</mat-label>
+    <input matInput currency-mask placeholder="min" (input)="setPriceFilter()">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Max. price range</mat-label>
+    <input matInput currency-mask placeholder="max" (input)="setPriceFilter()">
+  </mat-form-field>
+
+
+
+
+<p>{{dataSource.data.length}} von maximal {{itemList.length}} Ergebnisse</p>
+ 
+
+
+
+
+
+
+</div>
+
+
+
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table" matSortActive="price" matSortDirection="asc">
+
+  <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+      <h2>Marke</h2>
+    </th>
+    <td mat-cell *matCellDef="let item"> {{item.brand}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+      <h2>Modell</h2>
+    </th>
+    <td mat-cell *matCellDef="let item"> {{item.model}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+      <h2>Preis</h2>
+    </th>
+    <td mat-cell *matCellDef="let item"> {{ getCurrencyStringFromNumber(item.price) }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let items; let row; columns: displayedColumns;" (click)="navigateToItemDetails(items.id)"></tr>
+</table>
+
+
+
+
+
+

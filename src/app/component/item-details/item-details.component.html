@@ -1,0 +1,16 @@
+<h2>Marke: {{item.brand}}</h2>
+<h2>Preis: {{getCurrencyStringFromNumber(item.price)}}</h2>
+<h2>Farbe: {{item.color}}</h2>
+<h2>Modellname: {{item.model}}</h2>
+<h2 *ngIf="item.hasFreezer == true">Gefrierfach: Ja</h2>
+<h2 *ngIf="item.hasFreezer == false">Gefrierfach: Nein</h2>
+<h2>Niedrigste Temperatur:{{item.lowestTemperature}}</h2>
+<h2 *ngIf="item.hasAutomaticDefrosting == true">Abbauautomatik: Ja</h2>
+<h2 *ngIf="item.hasAutomaticDefrosting == false">Abbauautomatik: Nein</h2>
+
+
+<h2>Noch {{ item.stockAmmount }} Stück auf Lager</h2>
+<button (click)="buyItem()">Kaufen</button>
+<button (click)="navigateToItemList()">Zürück</button>
+
+

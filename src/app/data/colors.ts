@@ -1,0 +1,1 @@
+export const colors: string[] = ['glänzend weiß', 'mattes weiß', 'glänzend Grau', 'mattes Grau', 'glänzend Schwarz', 'mattes Schwarz']
